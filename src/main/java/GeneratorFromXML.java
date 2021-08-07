@@ -17,6 +17,7 @@ public class GeneratorFromXML {
         System.out.println("hot-fix-1");
         System.out.println("hot-fix-3");
         System.out.println("hot-fix-5");
+        System.out.println("hot-fix-4");
        /* List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         File configFile = new File("generatorConfig.xml");
