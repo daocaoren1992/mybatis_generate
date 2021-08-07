@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class GeneratorFromXML {
     public static void main(String[] args) throws Exception {
+        System.out.println("hot-fix");
        /* List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         File configFile = new File("generatorConfig.xml");
