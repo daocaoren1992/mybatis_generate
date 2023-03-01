@@ -4,40 +4,44 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="testTables" targetRuntime="MyBatis3Simple">
+    <context id="testTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <!--注解-->
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressDate" value="false" />
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="false"/>
+            <property name="javaFileEncoding" value="UTF-8"/>
         </commentGenerator>
-        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+<!--        数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost/mybatis"
-                        userId="root"
-                        password="123456">
+                        connectionURL="jdbc:mysql://oregon-retech-dev.cjrztgqt9ak1.us-west-2.rds.amazonaws.com:3306/db_retech_shop_dev"
+                        userId="retech_dev"
+                        password="retechV587">
+            <!-- 获取表注释 -->
+            <property name="useInformationSchema" value="false"/>
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，
                 为 true时把JDBC DECIMAL 和
 			NUMERIC 类型解析为java.math.BigDecimal -->
-        <javaTypeResolver >
-            <property name="forceBigDecimals" value="false" />
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.sun.pojo" targetProject="./src/main/java/">
+        <javaModelGenerator targetPackage="com.test.pojo" targetProject="./src/main/java/">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
-            <property name="trimStrings" value="true" />
+            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.sun.mapper"  targetProject="./src/main/java/">
+        <sqlMapGenerator targetPackage="com.test.mapper" targetProject="./src/main/java/">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sun.mapper"  targetProject="./src/main/java/">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.mapper" targetProject="./src/main/java/">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <!--
@@ -49,9 +53,7 @@
             enableSelectByExample:Select多条语句中加入where条件查询，默认true开启
             selectByExampleQueryId:Select单个对象语句中加入where条件查询，默认true开启
          -->
-        <table  tableName="account" domainObjectName="Account"/>
-        <table  tableName="user" domainObjectName="User"/>
-        <table  tableName="role" domainObjectName="Role"/>
+        <table tableName="job" domainObjectName="JobEntity"/>
 
 
     </context>
